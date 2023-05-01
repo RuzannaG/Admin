@@ -1,8 +1,9 @@
-import { useState } from "react"
+import {useEffect,useRef, useState } from "react"
 import { useNavigate } from "react-router";
 
 export const Login=()=>{
 
+  const inputRef=useRef();
 
     const [name,setName]=useState();
     const [password,setPassword]=useState();
@@ -19,7 +20,12 @@ setPassword(e.target.value)
         if(name==='admin' && password==="admin"){
             navigate('/users')
         }
-     }
+      }
+        
+    useEffect(()=>{
+      inputRef.current.focus();
+  },[])
+     
     return(
         <div className="city">   
             <div className="container">
@@ -29,6 +35,7 @@ setPassword(e.target.value)
           <div>
             <label for="name">Name </label>
             <input onChange={hndleName}
+            ref={inputRef}
                    value={name}
                    id="name"
                    type="text"

@@ -7,9 +7,7 @@ export const UserDetails=({list})=>{
     // console.log(params)
 
     const searchUser=list?.find((i)=> i.id === +params.id)
-    console.log(params.id)
-    console.log(list)
-    console.log(searchUser)
+    
     return(
         
          
@@ -21,7 +19,7 @@ export const UserDetails=({list})=>{
                                     <li> {searchUser?.name}</li>
                                     <li> {searchUser?.age}</li>
                                     <li> {searchUser?.email}</li>
-                                    <li> {searchUser?.name}</li>
+                                    <li> {searchUser?.profession}</li>
 
                                 </li>
                             </ul>

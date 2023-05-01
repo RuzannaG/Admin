@@ -31,7 +31,7 @@ function App() {
 
     <Routes>
       <Route path={'/'} element={<Landing/>} />
-      <Route path={'users'} element={ <Users/>} />
+      <Route path={'users'} element={ <Users  list={list}/>}  />
       <Route path={'userDetails/:id'}  element={<UserDetails list={list}/>} />
       <Route path={'login'} element={ <Login/>} />
       

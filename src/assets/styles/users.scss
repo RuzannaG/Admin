@@ -10,13 +10,15 @@
 .SG{
   width: 180px;
   border: 1px solid green;
-  list-style: none;
+  
   border-radius: 10%;
   text-align: center;
   margin: 20px;
 
 }
-
+ul{
+  list-style: none;
+}
 .img{
   width: 100px;
 }
@@ -24,4 +26,36 @@
   display: flex;
   justify-content: center;
   
+}
+.input-new-user{
+  
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+.input-new-user input, .addBut{
+  width: 200px;
+  margin-left: 40%;
+  margin-top: 10px;
+  
+}
+.addBut{
+  border: none;
+  height: 25px;
+  color: green;
+}
+.inp-ut
+{
+  border: none;
+  border-bottom: 1px solid ;
+}
+.deletBut{
+  border: 1px solid green;
+  width: 100px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 15px;
 }
