@@ -1,9 +1,12 @@
-import {  useEffect, useRef, useState } from "react"
+import { useState ,useMemo} from "react"
+import { useForm } from "react-hook-form";
 
 
 export const UserAdd = ({ list, setList }) => {
+    const { register, handleSubmit } = useForm();
+    // const onSubmit = data => console.log(data);
 
-    
+
 
     const [img, setImg] = useState([]);
 
@@ -27,33 +30,36 @@ export const UserAdd = ({ list, setList }) => {
 
 
 
-    const handleAdd = () => {
-       if(name !== ''  && age !=='' && email !== ''  &&  prof !== ''  ){
-        setList([...list, {
-            id: Math.random(),
-            name: name,
-            age: age,
-            email: email,
-            profession: prof
-        }])
-    }
+    const onSubmit = () => {
+        if (name !== '' && age !== '' && email !== '' && prof !== '') {
+            setList([...list, {
+                id: Math.random(),
+                name: name,
+                age: age,
+                email: email,
+                profession: prof
+            }])
+        }
         setName('')
         setAge('')
         setEmail('')
         setProf('')
     }
 
+    const memo=useMemo(()=> onSubmit(),[])
+
     return (
         <>
             <div className="input-new-user">
-                
 
-                <input className="inp-ut" type="text" placeholder="Name" onChange={handleName} value={name} />
-                <input  className="inp-ut" type="text" placeholder="Age" onChange={handleAge} value={age} />
-                <input className="inp-ut" type="email" placeholder="Email" onChange={handleEmail} value={email} />
-                <input className="inp-ut" type="text" placeholder="Proffesion" onChange={handleProf} value={prof} />
+                <form onSubmit={handleSubmit(onSubmit)}>  
+                    <input className="inp-ut" type="text"   {...register("name", { required: true, maxLength: 20 })} placeholder="Name" onChange={handleName} value={name} />
+                    <input className="inp-ut" type="text"  {...register("age", { min: 18, max: 99 })} placeholder="Age" onChange={handleAge} value={age} />
+                    <input className="inp-ut" type="email"  {...register('email')}  placeholder="Email" onChange={handleEmail} value={email} />
+                    <input className="inp-ut" type="text"  {...register('prof')}  placeholder="Proffesion" onChange={handleProf} value={prof} />
 
-                <button  className="addBut" onClick={handleAdd}>Add new User</button>
+                    <button  type ="submit" className="addBut" >Add new User</button>
+                </form>
 
             </div>
 
